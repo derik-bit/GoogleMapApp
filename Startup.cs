@@ -22,11 +22,11 @@ namespace GoogleMappApp
         {
             services.AddControllersWithViews();
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddTransient<ILocationRepository, LocationXMLRepository>();
+            services.AddSingleton<ILocationRepository, LocationXMLRepository>();
 
             // Uncomment below line to make db call, Data has to be seeded from program.cs before calling this line
             // Only one of the above or below implementation should be called
-            // services.AddScoped<ILocationRepository, LocationDBRepository>();
+            // services.AddSingleton<ILocationRepository, LocationDBRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
